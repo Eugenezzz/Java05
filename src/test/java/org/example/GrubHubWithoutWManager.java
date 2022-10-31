@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import java.time.Duration;
 
 public class GrubHubWithoutWManager {
@@ -45,14 +46,17 @@ public class GrubHubWithoutWManager {
     }
 
     @Test
-    public void testLoginPage() {
+    public void testLoginForm() {
         driver.get("https://www.grubhub.com/");
+
         driver.findElement(By.cssSelector("[data-testid='prettyhomepagesignin']")).click();
         driver.findElement(By.cssSelector(".ghs-goToCreateAccount")).click();
+
         driver.findElement(By.id("firstName")).sendKeys("Vasya");
         driver.findElement(By.id("lastName")).sendKeys("Piterskiy");
         driver.findElement(By.id("email")).sendKeys("vasiliy@gmail.com");
         driver.findElement(By.id("password")).sendKeys("Ababgalamaga1!");
+
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
         Assert.assertTrue(driver.findElement(By.xpath("//img[@class='captchaMediaImage']")).isDisplayed());
